@@ -36,6 +36,7 @@ public class NimMenuBar {
 	 * Constructor fpr NimMenuBar
 	 * @param theGame to retrieve the currernt game object
 	 * @param nimPane to retrieve the current NimPane object to call NewGame event from menu
+	 * @param showHelpDialog to retrieve the current game object for displaying the showHelpDialog
 	 */
 	public NimMenuBar(Game theGame, NimPane nimPane, NimHelpDialog showHelpDialog) {
 		this.theGame = theGame;

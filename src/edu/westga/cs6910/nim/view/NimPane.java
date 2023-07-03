@@ -49,7 +49,7 @@ public class NimPane extends BorderPane {
 
 		this.pnContent = new BorderPane();
 		
-		this.menuBar = new NimMenuBar(this.theGame, this, shouldShowHelpDialog);
+		this.menuBar = new NimMenuBar(this.theGame, this, this.shouldShowHelpDialog);
 		this.setTop(this.menuBar.createMenu());
 
 		this.pnChooseFirstPlayer = new NewGamePane(theGame);	
