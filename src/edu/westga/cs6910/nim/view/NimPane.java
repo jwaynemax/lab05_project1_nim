@@ -50,30 +50,34 @@ public class NimPane extends BorderPane {
 //		this.pnChooseFirstPlayer = new NewGamePane(theGame, this);	
 //		HBox topBox = this.createHBoxHolder(this.pnChooseFirstPlayer, false);
 //		this.pnContent.setTop(topBox);	
-		this.pnContent.setTop(this.buildNimPane.pnFirstPlayer());	
 
-		this.pnHumanPlayer = new HumanPane(theGame);		
-		HBox leftBox = this.createHBoxHolder(this.pnHumanPlayer, true);
-		this.pnContent.setLeft(leftBox);	
-
-		this.pnComputerPlayer = new ComputerPane(theGame);
-		HBox centerBox = this.createHBoxHolder(this.pnComputerPlayer, true);
-		this.pnContent.setCenter(centerBox);
+//		this.pnHumanPlayer = new HumanPane(theGame);		
+//		HBox leftBox = this.createHBoxHolder(this.pnHumanPlayer, true);
+//		this.pnContent.setLeft(leftBox);	
 		
-		this.pnGameInfo = new StatusPane(theGame);
-		HBox bottomBox = this.createHBoxHolder(this.pnGameInfo, false);
-		this.pnContent.setBottom(bottomBox);
+//		this.pnComputerPlayer = new ComputerPane(theGame);
+//		HBox centerBox = this.createHBoxHolder(this.pnComputerPlayer, true);
+//		this.pnContent.setCenter(centerBox);
+		
+//		this.pnGameInfo = new StatusPane(theGame);
+//		HBox bottomBox = this.createHBoxHolder(this.pnGameInfo, false);
+//		this.pnContent.setBottom(bottomBox);
 
+		this.pnContent.setTop(this.buildNimPane.pnFirstPlayer());	
+		this.pnContent.setLeft(this.buildNimPane.pnHumanPlayer());	
+		this.pnContent.setCenter(this.buildNimPane.pnComputerPlayer());
+		this.pnContent.setBottom(this.buildNimPane.pnGameInfo());
+		
 		this.setCenter(this.pnContent);
 	}
 
-	private HBox createHBoxHolder(Pane newPane, boolean disable) {
-		newPane.setDisable(disable);
-		HBox leftBox = new HBox();
-		leftBox.getStyleClass().add("pane-border");	
-		leftBox.getChildren().add(newPane);
-		return leftBox;
-	}
+//	private HBox createHBoxHolder(Pane newPane, boolean disable) {
+//		newPane.setDisable(disable);
+//		HBox leftBox = new HBox();
+//		leftBox.getStyleClass().add("pane-border");	
+//		leftBox.getChildren().add(newPane);
+//		return leftBox;
+//	}
 	
 	/**
 	 * getter for pnHumanPlayer

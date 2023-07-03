@@ -16,8 +16,26 @@ public class FullNimPane {
 	
 	public HBox pnFirstPlayer() {
 		this.nimPane.setPnChooseFirstPlayer(new NewGamePane(this.theGame, this.nimPane));	
-		HBox topBox = this.createHBoxHolder(this.nimPane.getPnChooseFirstPlayer(), false);
-		return topBox;
+		HBox box = this.createHBoxHolder(this.nimPane.getPnChooseFirstPlayer(), false);
+		return box;
+	}
+	
+	public HBox pnHumanPlayer() {
+		this.nimPane.setPnHumanPlayer(new HumanPane(this.theGame));		
+		HBox box = this.createHBoxHolder(this.nimPane.getPnHumanPlayer(), true);
+		return box;
+	}
+	
+	public HBox pnComputerPlayer() {
+		this.nimPane.setPnComputerPlayer(new ComputerPane(this.theGame));		
+		HBox box = this.createHBoxHolder(this.nimPane.getPnComputerPlayer(), true);
+		return box;
+	}
+	
+	public HBox pnGameInfo() {
+		this.nimPane.setPnGameInfo(new StatusPane(theGame));
+		HBox box = this.createHBoxHolder(this.nimPane.getPnGameInfo(), true);
+		return box;
 	}
 	
 	private HBox createHBoxHolder(Pane newPane, boolean disable) {
@@ -27,5 +45,4 @@ public class FullNimPane {
 		leftBox.getChildren().add(newPane);
 		return leftBox;
 	}
-
 }
