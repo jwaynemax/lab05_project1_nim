@@ -55,4 +55,20 @@ public class NimHelpDialog {
 				
 		return this.shouldShowHelpDialog; 
 	}
+	
+	/**
+	 * Getter for shouldShowHelpDialog
+	 * @return this.shouldShowHelpDialog true or false
+	 */
+	public boolean getShouldShowHelpDialog() {
+		return this.shouldShowHelpDialog;
+	}
+	
+	/**
+	 * Setter for shouldShowHelpDialog
+	 * @param shouldShowHelpDialog to set current Games value for shouldShowHelpDialog
+	 */
+	public void setShouldShowHelpDialog(boolean shouldShowHelpDialog) {
+		this.shouldShowHelpDialog = shouldShowHelpDialog;
+	}
 }

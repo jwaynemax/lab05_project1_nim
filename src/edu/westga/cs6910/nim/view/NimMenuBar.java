@@ -26,15 +26,17 @@ public class NimMenuBar {
 	
 	private Game theGame;
 	private NimPane nimPane;
+	private NimHelpDialog showHelpDialog;
 	
 	/**
 	 * Constructor fpr NimMenuBar
 	 * @param theGame to retrieve the currernt game object
 	 * @param nimPane to retrieve the current NimPane object to call NewGame event from menu
 	 */
-	public NimMenuBar(Game theGame, NimPane nimPane) {
+	public NimMenuBar(Game theGame, NimPane nimPane, NimHelpDialog showHelpDialog) {
 		this.theGame = theGame;
 		this.nimPane = nimPane;
+		this.showHelpDialog = showHelpDialog;
 	}
 	
 	/**
@@ -49,8 +51,10 @@ public class NimMenuBar {
 		Menu mnuGame = this.createGameMenu();
 		
 		Menu mnuSettings = this.createStrategyMenu();
+		
+		Menu mnuHelp = this.createHelpMenu();
 				
-		mnuMain.getMenus().addAll(mnuGame, mnuSettings);
+		mnuMain.getMenus().addAll(mnuGame, mnuSettings, mnuHelp);
 		vbxMenuHolder.getChildren().addAll(mnuMain);
 		return vbxMenuHolder;
 	}
@@ -157,6 +161,30 @@ public class NimMenuBar {
 		
 		mnuFile.getItems().addAll(mnuNew, mnuExit);
 		return mnuFile;
+	}
+	
+	private Menu createHelpMenu() {
+		Menu mnuHelp = new Menu("_Help");
+		mnuHelp.setMnemonicParsing(true);
+	
+		MenuItem mnuHelpItem = new MenuItem("_Help");
+		mnuHelpItem.setMnemonicParsing(true);
+		mnuHelpItem.setAccelerator(new KeyCodeCombination(KeyCode.H, KeyCombination.SHORTCUT_DOWN));
+		mnuHelpItem.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				NimMenuBar.this.showHelpDialog.setShouldShowHelpDialog(true);
+				NimMenuBar.this.showHelpDialog.showHelpDialog();
+			}
+		});
+
+		MenuItem mnuAbout = new MenuItem("_About");
+		mnuAbout.setMnemonicParsing(true);
+		mnuAbout.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
+		mnuAbout.setOnAction(event -> System.exit(0));
+		
+		mnuHelp.getItems().addAll(mnuHelpItem, mnuAbout);
+		return mnuHelp;
 	}
 
 }
