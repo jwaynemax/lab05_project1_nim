@@ -29,10 +29,10 @@ import javafx.scene.layout.VBox;
 public class NimMenuBar {
 	
 	private Game theGame;
-	private NimPane nimPane;
 	private NimHelpDialog showHelpDialog;
 	private ToggleGroup tglStrategy;
 	private Menu mnuSettings;
+	private FullNimPane fullNimPane;
 	
 	/**
 	 * Constructor fpr NimMenuBar
@@ -40,9 +40,9 @@ public class NimMenuBar {
 	 * @param nimPane to retrieve the current NimPane object to call NewGame event from menu
 	 * @param showHelpDialog to retrieve the current game object for displaying the showHelpDialog
 	 */
-	public NimMenuBar(Game theGame, NimPane nimPane, NimHelpDialog showHelpDialog) {
+	public NimMenuBar(Game theGame, FullNimPane fullNimPane, NimHelpDialog showHelpDialog) {
 		this.theGame = theGame;
-		this.nimPane = nimPane;
+		this.fullNimPane = fullNimPane;
 		this.showHelpDialog = showHelpDialog;
 		this.tglStrategy = new ToggleGroup();
 	}
@@ -164,12 +164,12 @@ public class NimMenuBar {
 		 */
 		@Override
 		public void handle(ActionEvent theEventObject) {
-			NimMenuBar.this.nimPane.getPnChooseFirstPlayer().reset();
-			NimMenuBar.this.nimPane.getPnChooseFirstPlayer().setDisable(false);
-			NimMenuBar.this.nimPane.getPnHumanPlayer().setDisable(true);
-			NimMenuBar.this.nimPane.getPnComputerPlayer().setDisable(true);
-			NimMenuBar.this.nimPane.getPnComputerPlayer().resetNumberTaken();
-			NimMenuBar.this.nimPane.getPnHumanPlayer().resetNumberToTakeComboBox();
+			NimMenuBar.this.fullNimPane.getPnChooseFirstPlayer().reset();
+			NimMenuBar.this.fullNimPane.getPnChooseFirstPlayer().setDisable(false);
+			NimMenuBar.this.fullNimPane.getPnHumanPlayer().setDisable(true);
+			NimMenuBar.this.fullNimPane.getPnComputerPlayer().setDisable(true);
+			NimMenuBar.this.fullNimPane.getPnComputerPlayer().resetNumberTaken();
+			NimMenuBar.this.fullNimPane.getPnHumanPlayer().resetNumberToTakeComboBox();
 			NimMenuBar.this.showHelpDialog.showHelpDialog();
 		}
 	}

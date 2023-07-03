@@ -7,34 +7,36 @@ import javafx.scene.layout.Pane;
 public class FullNimPane {
 	
 	private Game theGame;
-	private NimPane nimPane;
+	private HumanPane pnHumanPlayer;
+	private ComputerPane pnComputerPlayer;
+	private StatusPane pnGameInfo;
+	private NewGamePane pnChooseFirstPlayer;
 	
 	public FullNimPane(Game theGame, NimPane nimPane) {
 		this.theGame = theGame;
-		this.nimPane = nimPane;
-//	}
+	}
 	
 	public HBox pnFirstPlayer() {
-		this.nimPane.setPnChooseFirstPlayer(new NewGamePane(this.theGame, this.nimPane));	
-		HBox box = this.createHBoxHolder(this.nimPane.getPnChooseFirstPlayer(), false);
+		this.pnChooseFirstPlayer = new NewGamePane(this.theGame, this);	
+		HBox box = this.createHBoxHolder(this.pnChooseFirstPlayer, false);
 		return box;
 	}
 	
 	public HBox pnHumanPlayer() {
-		this.nimPane.setPnHumanPlayer(new HumanPane(this.theGame));		
-		HBox box = this.createHBoxHolder(this.nimPane.getPnHumanPlayer(), true);
+		this.pnHumanPlayer = new HumanPane(this.theGame);		
+		HBox box = this.createHBoxHolder(this.pnHumanPlayer, true);
 		return box;
 	}
 	
 	public HBox pnComputerPlayer() {
-		this.nimPane.setPnComputerPlayer(new ComputerPane(this.theGame));		
-		HBox box = this.createHBoxHolder(this.nimPane.getPnComputerPlayer(), true);
+		this.pnComputerPlayer = new ComputerPane(this.theGame);		
+		HBox box = this.createHBoxHolder(this.pnComputerPlayer, true);
 		return box;
 	}
 	
 	public HBox pnGameInfo() {
-		this.nimPane.setPnGameInfo(new StatusPane(theGame));
-		HBox box = this.createHBoxHolder(this.nimPane.getPnGameInfo(), true);
+		this.pnGameInfo = new StatusPane(this.theGame);
+		HBox box = this.createHBoxHolder(this.pnGameInfo, true);
 		return box;
 	}
 	
@@ -44,5 +46,69 @@ public class FullNimPane {
 		leftBox.getStyleClass().add("pane-border");	
 		leftBox.getChildren().add(newPane);
 		return leftBox;
+	}
+	
+	/**
+	 * getter for pnHumanPlayer
+	 * @return pnHumanPlayer
+	 */
+	public HumanPane getPnHumanPlayer() {
+		return this.pnHumanPlayer;
+	}
+	
+	/**
+	 * setter for pnHumanPlayer
+	 * @param pnHumanPlayer sets this.pnHumanPlayer
+	 */
+	public void setPnHumanPlayer(HumanPane pnHumanPlayer) {
+		this.pnHumanPlayer = pnHumanPlayer;
+	}
+	
+	/**
+	 * getter for pnComputerPlayer
+	 * @return pnComputerPlayer
+	 */
+	public ComputerPane getPnComputerPlayer() {
+		return this.pnComputerPlayer;
+	}
+	
+	/**
+	 * setter for pnComputerPlayer
+	 * @param pnComputerPlayer sets this.pnComputerPlayer
+	 */
+	public void setPnComputerPlayer(ComputerPane pnComputerPlayer) {
+		this.pnComputerPlayer = pnComputerPlayer;
+	}
+	
+	/**
+	 * getter for pnGameInfo
+	 * @return pnGameInfo
+	 */
+	public StatusPane getPnGameInfo() {
+		return this.pnGameInfo;
+	}
+	
+	/**
+	 * setter for pnGameInfo
+	 * @param pnGameInfo sets this.pnGameInfo
+	 */
+	public void setPnGameInfo(StatusPane pnGameInfo) {
+		this.pnGameInfo = pnGameInfo;
+	}
+	
+	/**
+	 * getter for pnChooseFirstPlayer
+	 * @return pnChooseFirstPlayer
+	 */
+	public NewGamePane getPnChooseFirstPlayer() {
+		return this.pnChooseFirstPlayer;
+	}
+	
+	/**
+	 * setter for pnChooseFirstPlayer
+	 * @param pnChooseFirstPlayer sets this.pnChooseFirstPlayer
+	 */
+	public void setPnChooseFirstPlayer(NewGamePane pnChooseFirstPlayer) {
+		this.pnChooseFirstPlayer = pnChooseFirstPlayer;
 	}
 }

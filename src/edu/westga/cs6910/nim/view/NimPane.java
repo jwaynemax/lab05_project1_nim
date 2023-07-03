@@ -39,12 +39,12 @@ public class NimPane extends BorderPane {
 		this.shouldShowHelpDialog.showHelpDialog();
 
 		this.pnContent = new BorderPane();
-				
-		this.menuBar = new NimMenuBar(this.theGame, this, this.shouldShowHelpDialog);
-		this.setTop(this.menuBar.createMenu());
-		
 		this.buildNimPane = new FullNimPane(this.theGame, this);
 
+				
+		this.menuBar = new NimMenuBar(this.theGame, this.buildNimPane, this.shouldShowHelpDialog);
+		this.setTop(this.menuBar.createMenu());
+		
 		this.pnContent.setTop(this.buildNimPane.pnFirstPlayer());	
 		this.pnContent.setLeft(this.buildNimPane.pnHumanPlayer());	
 		this.pnContent.setCenter(this.buildNimPane.pnComputerPlayer());
@@ -53,67 +53,67 @@ public class NimPane extends BorderPane {
 		this.setCenter(this.pnContent);
 	}
 	
-	/**
-	 * getter for pnHumanPlayer
-	 * @return pnHumanPlayer
-	 */
-	public HumanPane getPnHumanPlayer() {
-		return this.pnHumanPlayer;
-	}
-	
-	/**
-	 * setter for pnHumanPlayer
-	 * @param pnHumanPlayer sets this.pnHumanPlayer
-	 */
-	public void setPnHumanPlayer(HumanPane pnHumanPlayer) {
-		this.pnHumanPlayer = pnHumanPlayer;
-	}
-	
-	/**
-	 * getter for pnComputerPlayer
-	 * @return pnComputerPlayer
-	 */
-	public ComputerPane getPnComputerPlayer() {
-		return this.pnComputerPlayer;
-	}
-	
-	/**
-	 * setter for pnComputerPlayer
-	 * @param pnComputerPlayer sets this.pnComputerPlayer
-	 */
-	public void setPnComputerPlayer(ComputerPane pnComputerPlayer) {
-		this.pnComputerPlayer = pnComputerPlayer;
-	}
-	
-	/**
-	 * getter for pnGameInfo
-	 * @return pnGameInfo
-	 */
-	public StatusPane getPnGameInfo() {
-		return this.pnGameInfo;
-	}
-	
-	/**
-	 * setter for pnGameInfo
-	 * @param pnGameInfo sets this.pnGameInfo
-	 */
-	public void setPnGameInfo(StatusPane pnGameInfo) {
-		this.pnGameInfo = pnGameInfo;
-	}
-	
-	/**
-	 * getter for pnChooseFirstPlayer
-	 * @return pnChooseFirstPlayer
-	 */
-	public NewGamePane getPnChooseFirstPlayer() {
-		return this.pnChooseFirstPlayer;
-	}
-	
-	/**
-	 * setter for pnChooseFirstPlayer
-	 * @param pnChooseFirstPlayer sets this.pnChooseFirstPlayer
-	 */
-	public void setPnChooseFirstPlayer(NewGamePane pnChooseFirstPlayer) {
-		this.pnChooseFirstPlayer = pnChooseFirstPlayer;
-	}
+//	/**
+//	 * getter for pnHumanPlayer
+//	 * @return pnHumanPlayer
+//	 */
+//	public HumanPane getPnHumanPlayer() {
+//		return this.pnHumanPlayer;
+//	}
+//	
+//	/**
+//	 * setter for pnHumanPlayer
+//	 * @param pnHumanPlayer sets this.pnHumanPlayer
+//	 */
+//	public void setPnHumanPlayer(HumanPane pnHumanPlayer) {
+//		this.pnHumanPlayer = pnHumanPlayer;
+//	}
+//	
+//	/**
+//	 * getter for pnComputerPlayer
+//	 * @return pnComputerPlayer
+//	 */
+//	public ComputerPane getPnComputerPlayer() {
+//		return this.pnComputerPlayer;
+//	}
+//	
+//	/**
+//	 * setter for pnComputerPlayer
+//	 * @param pnComputerPlayer sets this.pnComputerPlayer
+//	 */
+//	public void setPnComputerPlayer(ComputerPane pnComputerPlayer) {
+//		this.pnComputerPlayer = pnComputerPlayer;
+//	}
+//	
+//	/**
+//	 * getter for pnGameInfo
+//	 * @return pnGameInfo
+//	 */
+//	public StatusPane getPnGameInfo() {
+//		return this.pnGameInfo;
+//	}
+//	
+//	/**
+//	 * setter for pnGameInfo
+//	 * @param pnGameInfo sets this.pnGameInfo
+//	 */
+//	public void setPnGameInfo(StatusPane pnGameInfo) {
+//		this.pnGameInfo = pnGameInfo;
+//	}
+//	
+//	/**
+//	 * getter for pnChooseFirstPlayer
+//	 * @return pnChooseFirstPlayer
+//	 */
+//	public NewGamePane getPnChooseFirstPlayer() {
+//		return this.pnChooseFirstPlayer;
+//	}
+//	
+//	/**
+//	 * setter for pnChooseFirstPlayer
+//	 * @param pnChooseFirstPlayer sets this.pnChooseFirstPlayer
+//	 */
+//	public void setPnChooseFirstPlayer(NewGamePane pnChooseFirstPlayer) {
+//		this.pnChooseFirstPlayer = pnChooseFirstPlayer;
+//	}
 }

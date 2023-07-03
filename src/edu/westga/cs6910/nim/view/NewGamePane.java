@@ -24,21 +24,21 @@ public class NewGamePane extends GridPane {
 	private Game theGame;
 	private Player theHuman;
 	private Player theComputer;
-	private NimPane nimPane;
+	private FullNimPane fullNimPane;
 
 	/**
 	 * Constructor to create a NewGamePane
 	 * @param theGame retrieves the current Game object from NimPane
 	 * @param nimPane retrieves the current NimPane object from NimPane
 	 */
-	public NewGamePane(Game theGame, NimPane nimPane) {		
+	public NewGamePane(Game theGame, FullNimPane fullNimPane) {		
 		if (theGame == null) {
 			throw new IllegalArgumentException("Invalid game");
 		}
 		this.theGame = theGame;
 		this.theHuman = this.theGame.getHumanPlayer();
 		this.theComputer = this.theGame.getComputerPlayer();
-		this.nimPane = nimPane;
+		this.fullNimPane = fullNimPane;
 		
 		this.buildPane();
 	}
@@ -86,7 +86,7 @@ public class NewGamePane extends GridPane {
 			public void handle(ActionEvent event) {
 				int pileSize = NewGamePane.this.cmbInitialSize.getValue();
 				NewGamePane.this.theGame.setPileSize(pileSize);
-				NewGamePane.this.nimPane.getPnGameInfo().update();
+				NewGamePane.this.fullNimPane.getPnGameInfo().update();
 			}
 		});
 		this.add(this.cmbInitialSize, 1, 0);
@@ -114,13 +114,13 @@ public class NewGamePane extends GridPane {
 		public void handle(ActionEvent theEventObject) {
 			int initialPileSize = NewGamePane.this.cmbInitialSize.getValue();
 			
-			NewGamePane.this.nimPane.getPnChooseFirstPlayer().setDisable(true);
+			NewGamePane.this.fullNimPane.getPnChooseFirstPlayer().setDisable(true);
 
 			if (Math.random() * 10 <= 4) {
-				NewGamePane.this.nimPane.getPnComputerPlayer().setDisable(false);
+				NewGamePane.this.fullNimPane.getPnComputerPlayer().setDisable(false);
 				NewGamePane.this.theGame.startNewGame(NewGamePane.this.theComputer, initialPileSize);					
 			} else {
-				NewGamePane.this.nimPane.getPnHumanPlayer().setDisable(false);
+				NewGamePane.this.fullNimPane.getPnHumanPlayer().setDisable(false);
 				NewGamePane.this.theGame.startNewGame(NewGamePane.this.theHuman, initialPileSize);
 			}
 		}
@@ -138,8 +138,8 @@ public class NewGamePane extends GridPane {
 		public void handle(ActionEvent artheEventObjectg0) {
 			int initialPileSize = NewGamePane.this.cmbInitialSize.getValue();
 			
-			NewGamePane.this.nimPane.getPnComputerPlayer().setDisable(false);
-			NewGamePane.this.nimPane.getPnChooseFirstPlayer().setDisable(true);
+			NewGamePane.this.fullNimPane.getPnComputerPlayer().setDisable(false);
+			NewGamePane.this.fullNimPane.getPnChooseFirstPlayer().setDisable(true);
 			NewGamePane.this.theGame.startNewGame(NewGamePane.this.theComputer, initialPileSize);
 		}
 	}
@@ -155,8 +155,8 @@ public class NewGamePane extends GridPane {
 		@Override
 		public void handle(ActionEvent theEventObject) {
 			int initialPileSize = NewGamePane.this.cmbInitialSize.getValue();
-			NewGamePane.this.nimPane.getPnChooseFirstPlayer().setDisable(true);
-			NewGamePane.this.nimPane.getPnHumanPlayer().setDisable(false);
+			NewGamePane.this.fullNimPane.getPnChooseFirstPlayer().setDisable(true);
+			NewGamePane.this.fullNimPane.getPnHumanPlayer().setDisable(false);
 			NewGamePane.this.theGame.startNewGame(NewGamePane.this.theHuman, initialPileSize);
 		}
 	}
