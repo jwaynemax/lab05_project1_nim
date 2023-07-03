@@ -31,6 +31,8 @@ public class NimMenuBar {
 	private Game theGame;
 	private NimPane nimPane;
 	private NimHelpDialog showHelpDialog;
+	private ToggleGroup tglStrategy;
+	private Menu mnuSettings;
 	
 	/**
 	 * Constructor fpr NimMenuBar
@@ -42,6 +44,7 @@ public class NimMenuBar {
 		this.theGame = theGame;
 		this.nimPane = nimPane;
 		this.showHelpDialog = showHelpDialog;
+		this.tglStrategy = new ToggleGroup();
 	}
 	
 	/**
@@ -69,28 +72,35 @@ public class NimMenuBar {
 	 * @return menuSettings
 	 */
 	private Menu createStrategyMenu() {
-		Menu mnuSettings = new Menu("_Strategy");
-		mnuSettings.setMnemonicParsing(true);
+		this.mnuSettings = new Menu("_Strategy");
+		this.mnuSettings.setMnemonicParsing(true);
+				
+//		RadioMenuItem mnuCautious = new RadioMenuItem("_Cautious");
+//		mnuCautious.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
+//		mnuCautious.setOnAction(new CautiousComputerListner());
+//		mnuCautious.setMnemonicParsing(true);
+//		mnuCautious.setToggleGroup(tglStrategy);
+//		
+//		RadioMenuItem mnuGreedy = new RadioMenuItem("Gr_eedy");
+//		mnuGreedy.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
+//		mnuGreedy.setOnAction(new GreedyComputerListner());
+//		mnuGreedy.setMnemonicParsing(true);
+//		mnuGreedy.setToggleGroup(tglStrategy);
+//		
+//		RadioMenuItem mnuRandom = new RadioMenuItem("_Random");
+//		mnuRandom.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
+//		mnuRandom.setOnAction(new RandomComputerListner());
+//		mnuRandom.setMnemonicParsing(true);
+//		mnuRandom.setToggleGroup(tglStrategy);
 		
-		ToggleGroup tglStrategy = new ToggleGroup();
+		RadioMenuItem mnuCautious = new RadioMenuItem();
+		mnuCautious = this.addStrategyItem("_Cautious", KeyCode.C, "cautious");
 		
-		RadioMenuItem mnuCautious = new RadioMenuItem("_Cautious");
-		mnuCautious.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
-		mnuCautious.setOnAction(new CautiousComputerListner());
-		mnuCautious.setMnemonicParsing(true);
-		mnuCautious.setToggleGroup(tglStrategy);
+		RadioMenuItem mnuGreedy = new RadioMenuItem();
+		mnuGreedy = this.addStrategyItem("Gr_eedy", KeyCode.E, "greedy");
 		
-		RadioMenuItem mnuGreedy = new RadioMenuItem("Gr_eedy");
-		mnuGreedy.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
-		mnuGreedy.setOnAction(new GreedyComputerListner());
-		mnuGreedy.setMnemonicParsing(true);
-		mnuGreedy.setToggleGroup(tglStrategy);
-		
-		RadioMenuItem mnuRandom = new RadioMenuItem("_Random");
-		mnuRandom.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
-		mnuRandom.setOnAction(new RandomComputerListner());
-		mnuRandom.setMnemonicParsing(true);
-		mnuRandom.setToggleGroup(tglStrategy);
+		RadioMenuItem mnuRandom = new RadioMenuItem();
+		mnuRandom = this.addStrategyItem("_Random", KeyCode.R, "random");
 		
 		NumberOfSticksStrategy currentStrategy = this.theGame.getComputerPlayer().getStrategy();
 		if (currentStrategy.getClass() == CautiousStrategy.class) {
@@ -101,54 +111,90 @@ public class NimMenuBar {
 			mnuGreedy.setSelected(true);
 		}
 
-		mnuSettings.getItems().addAll(mnuCautious, mnuGreedy, mnuRandom);
-		return mnuSettings;
+		this.mnuSettings.getItems().addAll(mnuCautious, mnuGreedy, mnuRandom);
+
+		return this.mnuSettings;
 	}
 	
-	/*
-	 * Defines the listener to set strategy to cautious.
-	 */
-	private class CautiousComputerListner implements EventHandler<ActionEvent> {
-		/*
-		 * Sets strategy to cautious
-		 */
-
-		@Override
-		public void handle(ActionEvent event) {
-			CautiousStrategy strategy = new CautiousStrategy();
-			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+	private RadioMenuItem addStrategyItem(String mnuItmTxt, KeyCode shortCutKey, String strategy) {
+		RadioMenuItem menuItem = new RadioMenuItem(mnuItmTxt);
+		menuItem.setAccelerator(new KeyCodeCombination(shortCutKey, KeyCombination.SHORTCUT_DOWN));
+		
+		if (strategy.equals("random")) {
+			menuItem.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent theEventObject) {
+					NimMenuBar.this.theGame.getComputerPlayer().setStrategy(new RandomStrategy());
+				}
+			});
+			
+		} else if (strategy.equals("greedy")) {
+			menuItem.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent arg0) {
+					NimMenuBar.this.theGame.getComputerPlayer().setStrategy(new GreedyStrategy());
+				}
+			});
+			
+		} else {
+			menuItem.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent arg0) {
+					NimMenuBar.this.theGame.getComputerPlayer().setStrategy(new CautiousStrategy());
+				}
+			});
 		}
+		
+		menuItem.setMnemonicParsing(true);
+		menuItem.setToggleGroup(this.tglStrategy);
+		
+		return menuItem;
 	}
-
-	/*
-	 * Defines the listener to set strategy to Greedy.
-	 */
-	private class GreedyComputerListner implements EventHandler<ActionEvent> {
-		/*
-		 * Sets strategy to Greedy
-		 */
-
-		@Override
-		public void handle(ActionEvent event) {
-			GreedyStrategy strategy = new GreedyStrategy();
-			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
-		}
-	}
-
-	/*
-	 * Defines the listener to set strategy to Random.
-	 */
-	private class RandomComputerListner implements EventHandler<ActionEvent> {
-		/*
-		 * Sets strategy to Random
-		 */
-
-		@Override
-		public void handle(ActionEvent event) {
-			RandomStrategy strategy = new RandomStrategy();
-			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
-		}
-	}
+	
+//	/*
+//	 * Defines the listener to set strategy to cautious.
+//	 */
+//	private class CautiousComputerListner implements EventHandler<ActionEvent> {
+//		/*
+//		 * Sets strategy to cautious
+//		 */
+//
+//		@Override
+//		public void handle(ActionEvent event) {
+//			CautiousStrategy strategy = new CautiousStrategy();
+//			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+//		}
+//	}
+//
+//	/*
+//	 * Defines the listener to set strategy to Greedy.
+//	 */
+//	private class GreedyComputerListner implements EventHandler<ActionEvent> {
+//		/*
+//		 * Sets strategy to Greedy
+//		 */
+//
+//		@Override
+//		public void handle(ActionEvent event) {
+//			GreedyStrategy strategy = new GreedyStrategy();
+//			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+//		}
+//	}
+//
+//	/*
+//	 * Defines the listener to set strategy to Random.
+//	 */
+//	private class RandomComputerListner implements EventHandler<ActionEvent> {
+//		/*
+//		 * Sets strategy to Random
+//		 */
+//
+//		@Override
+//		public void handle(ActionEvent event) {
+//			RandomStrategy strategy = new RandomStrategy();
+//			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+//		}
+//	}
 
 	private Menu createGameMenu() {
 		Menu mnuFile = new Menu("_Game");
