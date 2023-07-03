@@ -42,7 +42,9 @@ public class NimPane extends BorderPane {
 	private ComputerPane pnComputerPlayer;
 	private StatusPane pnGameInfo;
 	private NewGamePane pnChooseFirstPlayer;
-	private boolean shouldShowHelpDialog;
+	//private boolean shouldShowHelpDialog;
+	
+	private NimHelpDialog shouldShowHelpDialog;
 	
 	/**
 	 * Creates a pane object to provide the view for the specified
@@ -59,8 +61,20 @@ public class NimPane extends BorderPane {
 		}
 		this.theGame = theGame;
 		
-		this.shouldShowHelpDialog = true;
-		this.shouldShowHelpDialog = this.showHelpDialog();
+		this.shouldShowHelpDialog = new NimHelpDialog(true);
+		//this.shouldShowHelpDialog = true;
+		//this.shouldShowHelpDialog = this.showHelpDialog();
+		
+		
+		
+		this.shouldShowHelpDialog.showHelpDialog();
+
+		
+//		if (!this.shouldShowHelpDialog) {
+//			return false;
+//		}
+		
+		
 		this.pnContent = new BorderPane();
 		
 		this.createMenu();
@@ -174,9 +188,17 @@ public class NimPane extends BorderPane {
 				NimPane.this.pnComputerPlayer.setDisable(true);
 				NimPane.this.pnComputerPlayer.resetNumberTaken();
 				NimPane.this.pnHumanPlayer.resetNumberToTakeComboBox();
-				if (NimPane.this.shouldShowHelpDialog) {
-					NimPane.this.shouldShowHelpDialog = NimPane.this.showHelpDialog();
-				}
+			
+				NimPane.this.shouldShowHelpDialog.showHelpDialog();
+				
+//				if (!NimPane.this.shouldShowHelpDialog.showHelpDialog()) {
+//					NimPane.this.shouldShowHelpDialog = new NimHelpDialog(false);
+//				} else {
+//					NimPane.this.shouldShowHelpDialog.showHelpDialog();
+//				}
+//				if (NimPane.this.shouldShowHelpDialog) {
+//					NimPane.this.shouldShowHelpDialog = NimPane.this.showHelpDialog();
+//				}
 			}
 		});
 		
@@ -189,32 +211,32 @@ public class NimPane extends BorderPane {
 		return mnuFile;
 	}
 
-	protected boolean showHelpDialog() {
-		if (!this.shouldShowHelpDialog) {
-			return false;
-		}
-
-		Alert message = new Alert(AlertType.CONFIRMATION);
-		message.setTitle("CS6910: Better Nim");
-		
-		String helpMessage = 
-				"Nim rules: \nPlay against the computer.\n"
-				+ "Alternate taking turns, removing 1 to 3 sticks per turn.\n"
-				+ "The player who takes the last stick loses.\n"
-				+ "You may set the number of sticks on the pile at the start "
-				+ "of each game,\n  and switch what strategy the computer uses "
-				+ "at any time.";
-		message.setHeaderText(helpMessage);
-		message.setContentText("Would you like to see this dialog at the start of the next game?");
-		
-		ButtonType btnYes = new ButtonType("Yes");
-		ButtonType btnNo = new ButtonType("No");
-		message.getButtonTypes().setAll(btnYes, btnNo);
-		
-		Optional<ButtonType> result = message.showAndWait();
-		
-		return result.get() == btnYes; 
-	}
+//	protected boolean showHelpDialog() {
+//		if (!this.shouldShowHelpDialog) {
+//			return false;
+//		}
+//
+//		Alert message = new Alert(AlertType.CONFIRMATION);
+//		message.setTitle("CS6910: Better Nim");
+//		
+//		String helpMessage = 
+//				"Nim rules: \nPlay against the computer.\n"
+//				+ "Alternate taking turns, removing 1 to 3 sticks per turn.\n"
+//				+ "The player who takes the last stick loses.\n"
+//				+ "You may set the number of sticks on the pile at the start "
+//				+ "of each game,\n  and switch what strategy the computer uses "
+//				+ "at any time.";
+//		message.setHeaderText(helpMessage);
+//		message.setContentText("Would you like to see this dialog at the start of the next game?");
+//		
+//		ButtonType btnYes = new ButtonType("Yes");
+//		ButtonType btnNo = new ButtonType("No");
+//		message.getButtonTypes().setAll(btnYes, btnNo);
+//		
+//		Optional<ButtonType> result = message.showAndWait();
+//		
+//		return result.get() == btnYes; 
+//	}
 
 	/**
 	 * Defines the panel in which the user selects which Player plays first.
