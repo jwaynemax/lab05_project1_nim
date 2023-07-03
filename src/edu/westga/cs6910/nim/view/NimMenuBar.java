@@ -1,5 +1,7 @@
 package edu.westga.cs6910.nim.view;
 
+import java.time.LocalDate;
+
 import edu.westga.cs6910.nim.model.Game;
 import edu.westga.cs6910.nim.model.strategy.CautiousStrategy;
 import edu.westga.cs6910.nim.model.strategy.GreedyStrategy;
@@ -7,6 +9,8 @@ import edu.westga.cs6910.nim.model.strategy.NumberOfSticksStrategy;
 import edu.westga.cs6910.nim.model.strategy.RandomStrategy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -167,9 +171,9 @@ public class NimMenuBar {
 		Menu mnuHelp = new Menu("_Help");
 		mnuHelp.setMnemonicParsing(true);
 	
-		MenuItem mnuHelpItem = new MenuItem("_Help");
+		MenuItem mnuHelpItem = new MenuItem("He_lp");
 		mnuHelpItem.setMnemonicParsing(true);
-		mnuHelpItem.setAccelerator(new KeyCodeCombination(KeyCode.H, KeyCombination.SHORTCUT_DOWN));
+		mnuHelpItem.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.SHORTCUT_DOWN));
 		mnuHelpItem.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -180,8 +184,18 @@ public class NimMenuBar {
 
 		MenuItem mnuAbout = new MenuItem("_About");
 		mnuAbout.setMnemonicParsing(true);
-		mnuAbout.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
-		mnuAbout.setOnAction(event -> System.exit(0));
+		mnuAbout.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.SHORTCUT_DOWN));
+		mnuAbout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				LocalDate currentDate = LocalDate.now();
+				Alert aboutMsg = new Alert(AlertType.INFORMATION);
+				aboutMsg.setTitle("CS6910: Better Nim");
+				aboutMsg.setHeaderText("About");
+				aboutMsg.setHeaderText("Justin Maxwell \n" + currentDate);
+				aboutMsg.showAndWait();
+			}
+		});
 		
 		mnuHelp.getItems().addAll(mnuHelpItem, mnuAbout);
 		return mnuHelp;
