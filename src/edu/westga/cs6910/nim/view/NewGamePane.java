@@ -29,7 +29,7 @@ public class NewGamePane extends GridPane {
 	/**
 	 * Constructor to create a NewGamePane
 	 * @param theGame retrieves the current Game object from NimPane
-	 * @param nimPane retrieves the current NimPane object from NimPane
+	 * @param fullNimPane retrieves the current fullNimPane object from NimPane
 	 */
 	public NewGamePane(Game theGame, FullNimPane fullNimPane) {		
 		if (theGame == null) {

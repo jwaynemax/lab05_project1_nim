@@ -4,6 +4,11 @@ import edu.westga.cs6910.nim.model.Game;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+/**
+ * Build pnContent in NimPane
+ * @author Justin Maxwell
+ * @version Summer 2023
+ */
 public class FullNimPane {
 	
 	private Game theGame;
@@ -12,28 +17,49 @@ public class FullNimPane {
 	private StatusPane pnGameInfo;
 	private NewGamePane pnChooseFirstPlayer;
 	
+	/**
+	 * Constructor to build FullNimPane
+	 * @param theGame to retrieve the current game
+	 * @param nimPane to retrieve the current NimPane and use in pnFirstPlayer
+	 */
 	public FullNimPane(Game theGame, NimPane nimPane) {
 		this.theGame = theGame;
 	}
 	
+	/**
+	 * initialize pnFirstPlayer
+	 * @return box
+	 */
 	public HBox pnFirstPlayer() {
 		this.pnChooseFirstPlayer = new NewGamePane(this.theGame, this);	
 		HBox box = this.createHBoxHolder(this.pnChooseFirstPlayer, false);
 		return box;
 	}
 	
+	/**
+	 * initialize pnHumanPlayer
+	 * @return box
+	 */
 	public HBox pnHumanPlayer() {
 		this.pnHumanPlayer = new HumanPane(this.theGame);		
 		HBox box = this.createHBoxHolder(this.pnHumanPlayer, true);
 		return box;
 	}
 	
+	/**
+	 * initialize pnComputerPlayer
+	 * @return box
+	 */
 	public HBox pnComputerPlayer() {
 		this.pnComputerPlayer = new ComputerPane(this.theGame);		
 		HBox box = this.createHBoxHolder(this.pnComputerPlayer, true);
 		return box;
 	}
 	
+	/**
+	 * initialize pnGameInfo
+	 * @return box
+	 */
 	public HBox pnGameInfo() {
 		this.pnGameInfo = new StatusPane(this.theGame);
 		HBox box = this.createHBoxHolder(this.pnGameInfo, true);
