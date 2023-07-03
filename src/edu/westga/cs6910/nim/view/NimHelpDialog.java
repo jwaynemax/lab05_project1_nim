@@ -6,17 +6,27 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Determine whether or not dialog box should be shown
+ * @author 	Justin Maxwell
+ * @version Summer 2023
+ */
 public class NimHelpDialog {
 	
 	private boolean shouldShowHelpDialog;
 
 	/**
 	 * NimHelpDialog constructor
+	 * @param shouldShowHelpDialog defaulted to true so the game always launched dialog at the start
 	 */
 	public NimHelpDialog(boolean shouldShowHelpDialog) {
 		this.shouldShowHelpDialog = shouldShowHelpDialog;
 	}
 	
+	/**
+	 * check if user has selected yes to seeing the dialog box - then display
+	 * @return shouldShowHelpDialog - true or false
+	 */
 	public boolean showHelpDialog() {
 		
 		if (this.shouldShowHelpDialog) {
