@@ -140,7 +140,10 @@ public class NimMenuBar {
 		MenuItem mnuNew = new MenuItem("_New");
 		mnuNew.setMnemonicParsing(true);
 		mnuNew.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN));
-		mnuNew.setOnAction(this.nimPane.new NewGame());
+		mnuNew.setOnAction(event -> {
+			NewGame newGame = new NewGame();
+			newGame.handle(null);
+		});
 		
 		MenuItem mnuExit = new MenuItem("E_xit");
 		mnuExit.setMnemonicParsing(true);
@@ -149,6 +152,26 @@ public class NimMenuBar {
 		
 		mnuFile.getItems().addAll(mnuNew, mnuExit);
 		return mnuFile;
+	}
+	
+	/** 
+	 * Defines the listener for New Game NimMenuBar.
+	 */	
+	public class NewGame implements EventHandler<ActionEvent> {
+		/** 
+		 * Sets up user interface and starts a new game. 
+		 * Event handler for a click in the human player button.
+		 */
+		@Override
+		public void handle(ActionEvent theEventObject) {
+			NimMenuBar.this.nimPane.getPnChooseFirstPlayer().reset();
+			NimMenuBar.this.nimPane.getPnChooseFirstPlayer().setDisable(false);
+			NimMenuBar.this.nimPane.getPnHumanPlayer().setDisable(true);
+			NimMenuBar.this.nimPane.getPnComputerPlayer().setDisable(true);
+			NimMenuBar.this.nimPane.getPnComputerPlayer().resetNumberTaken();
+			NimMenuBar.this.nimPane.getPnHumanPlayer().resetNumberToTakeComboBox();
+			NimMenuBar.this.showHelpDialog.showHelpDialog();
+		}
 	}
 	
 	private Menu createHelpMenu() {

@@ -104,24 +104,4 @@ public class NimPane extends BorderPane {
 	public NewGamePane getPnChooseFirstPlayer() {
 		return this.pnChooseFirstPlayer;
 	}
-	
-	/** 
-	 * Defines the listener for New Game NimMenuBar.
-	 */	
-	public class NewGame implements EventHandler<ActionEvent> {
-		/** 
-		 * Sets up user interface and starts a new game. 
-		 * Event handler for a click in the human player button.
-		 */
-		@Override
-		public void handle(ActionEvent theEventObject) {
-			NimPane.this.pnChooseFirstPlayer.reset();
-			NimPane.this.pnChooseFirstPlayer.setDisable(false);
-			NimPane.this.pnHumanPlayer.setDisable(true);
-			NimPane.this.pnComputerPlayer.setDisable(true);
-			NimPane.this.pnComputerPlayer.resetNumberTaken();
-			NimPane.this.pnHumanPlayer.resetNumberToTakeComboBox();
-			NimPane.this.shouldShowHelpDialog.showHelpDialog();
-		}
-	}
 }
