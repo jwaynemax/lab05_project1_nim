@@ -12,7 +12,7 @@ public class FullNimPane {
 	public FullNimPane(Game theGame, NimPane nimPane) {
 		this.theGame = theGame;
 		this.nimPane = nimPane;
-	}
+//	}
 	
 	public HBox pnFirstPlayer() {
 		this.nimPane.setPnChooseFirstPlayer(new NewGamePane(this.theGame, this.nimPane));	

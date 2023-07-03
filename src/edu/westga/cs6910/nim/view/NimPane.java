@@ -12,10 +12,10 @@ import javafx.scene.layout.BorderPane;
 public class NimPane extends BorderPane {
 	private Game theGame;
 	private BorderPane pnContent;
-	private HumanPane pnHumanPlayer;
-	private ComputerPane pnComputerPlayer;
-	private StatusPane pnGameInfo;
-	private NewGamePane pnChooseFirstPlayer;
+//	private HumanPane pnHumanPlayer;
+//	private ComputerPane pnComputerPlayer;
+//	private StatusPane pnGameInfo;
+//	private NewGamePane pnChooseFirstPlayer;
 	private NimHelpDialog shouldShowHelpDialog;
 	private NimMenuBar menuBar;
 	private FullNimPane buildNimPane;
