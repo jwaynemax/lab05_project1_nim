@@ -39,8 +39,8 @@ public class NimPane extends BorderPane {
 	private StatusPane pnGameInfo;
 	private NewGamePane pnChooseFirstPlayer;
 	private NimHelpDialog shouldShowHelpDialog;
-	
 	private NimMenuBar menuBar;
+	
 	/**
 	 * Creates a pane object to provide the view for the specified
 	 * Game model object.
@@ -91,7 +91,6 @@ public class NimPane extends BorderPane {
 		return leftBox;
 	}
 	
-	
 	/** 
 	 * Defines the listener for New Game NimMenuBar.
 	 */	
@@ -111,102 +110,6 @@ public class NimPane extends BorderPane {
 			NimPane.this.shouldShowHelpDialog.showHelpDialog();
 		}
 	}
-
-//	private void createMenu() {
-//		VBox vbxMenuHolder = new VBox();
-//		
-//		MenuBar mnuMain = new MenuBar();
-//		
-//		Menu mnuGame = this.createGameMenu();
-//		
-//		Menu mnuSettings = this.createStrategyMenu();
-//				
-//		mnuMain.getMenus().addAll(mnuGame, mnuSettings);
-//		vbxMenuHolder.getChildren().addAll(mnuMain);
-//		this.setTop(vbxMenuHolder);
-//	}
-//
-//	private Menu createStrategyMenu() {
-//		Menu mnuSettings = new Menu("_Strategy");
-//		mnuSettings.setMnemonicParsing(true);
-//		
-//		ToggleGroup tglStrategy = new ToggleGroup();
-//		
-//		RadioMenuItem mnuCautious = new RadioMenuItem("_Cautious");
-//		mnuCautious.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
-//		mnuCautious.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override
-//			public void handle(ActionEvent arg0) {
-//				NimPane.this.theGame.getComputerPlayer().setStrategy(new CautiousStrategy());
-//			}
-//		});
-//		mnuCautious.setMnemonicParsing(true);
-//		mnuCautious.setToggleGroup(tglStrategy);
-//		
-//		RadioMenuItem mnuGreedy = new RadioMenuItem("Gr_eedy");
-//		mnuGreedy.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
-//		mnuGreedy.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override
-//			public void handle(ActionEvent arg0) {
-//				NimPane.this.theGame.getComputerPlayer().setStrategy(new GreedyStrategy());
-//			}
-//		});
-//		mnuGreedy.setMnemonicParsing(true);
-//		mnuGreedy.setToggleGroup(tglStrategy);
-//		
-//		RadioMenuItem mnuRandom = new RadioMenuItem("_Random");
-//		mnuRandom.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
-//		mnuRandom.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override
-//			public void handle(ActionEvent theEventObject) {
-//				NimPane.this.theGame.getComputerPlayer().setStrategy(new RandomStrategy());
-//			}
-//		});
-//		mnuRandom.setMnemonicParsing(true);
-//		mnuRandom.setToggleGroup(tglStrategy);
-//		
-//		NumberOfSticksStrategy currentStrategy = this.theGame.getComputerPlayer().getStrategy();
-//		if (currentStrategy.getClass() == CautiousStrategy.class) {
-//			mnuCautious.setSelected(true);
-//		} else if (currentStrategy.getClass() == RandomStrategy.class) {
-//			mnuRandom.setSelected(true);
-//		} else {
-//			mnuGreedy.setSelected(true);
-//		}
-//
-//		mnuSettings.getItems().addAll(mnuCautious, mnuGreedy, mnuRandom);
-//		return mnuSettings;
-//	}
-//
-//	private Menu createGameMenu() {
-//		Menu mnuFile = new Menu("_Game");
-//		mnuFile.setMnemonicParsing(true);
-//	
-//		MenuItem mnuNew = new MenuItem("_New");
-//		mnuNew.setMnemonicParsing(true);
-//		mnuNew.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN));
-//		mnuNew.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override
-//			public void handle(ActionEvent theEventObject) {
-//				NimPane.this.pnChooseFirstPlayer.reset();
-//				NimPane.this.pnChooseFirstPlayer.setDisable(false);
-//				NimPane.this.pnHumanPlayer.setDisable(true);
-//				NimPane.this.pnComputerPlayer.setDisable(true);
-//				NimPane.this.pnComputerPlayer.resetNumberTaken();
-//				NimPane.this.pnHumanPlayer.resetNumberToTakeComboBox();
-//				NimPane.this.shouldShowHelpDialog.showHelpDialog();
-//
-//			}
-//		});
-//		
-//		MenuItem mnuExit = new MenuItem("E_xit");
-//		mnuExit.setMnemonicParsing(true);
-//		mnuExit.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
-//		mnuExit.setOnAction(event -> System.exit(0));
-//		
-//		mnuFile.getItems().addAll(mnuNew, mnuExit);
-//		return mnuFile;
-//	}
 
 	/**
 	 * Defines the panel in which the user selects which Player plays first.

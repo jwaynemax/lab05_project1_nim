@@ -17,16 +17,30 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
 
+/**
+ * Create menu bar for NimPane
+ * @author 	Justin Maxwell
+ * @version Summer 2023
+ */
 public class NimMenuBar {
 	
 	private Game theGame;
 	private NimPane nimPane;
 	
+	/**
+	 * Constructor fpr NimMenuBar
+	 * @param theGame to retrieve the currernt game object
+	 * @param nimPane to retrieve the current NimPane object to call NewGame event from menu
+	 */
 	public NimMenuBar(Game theGame, NimPane nimPane) {
 		this.theGame = theGame;
 		this.nimPane = nimPane;
 	}
 	
+	/**
+	 * layout for menu bar
+	 * @return vbxMenuHolder to set top of border pane in NimPane
+	 */
 	public VBox createMenu() {
 		VBox vbxMenuHolder = new VBox();
 		
@@ -41,6 +55,10 @@ public class NimMenuBar {
 		return vbxMenuHolder;
 	}
 
+	/**
+	 * Create the strategy menu
+	 * @return menuSettings
+	 */
 	private Menu createStrategyMenu() {
 		Menu mnuSettings = new Menu("_Strategy");
 		mnuSettings.setMnemonicParsing(true);
@@ -49,34 +67,19 @@ public class NimMenuBar {
 		
 		RadioMenuItem mnuCautious = new RadioMenuItem("_Cautious");
 		mnuCautious.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
-		mnuCautious.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-				NimMenuBar.this.theGame.getComputerPlayer().setStrategy(new CautiousStrategy());
-			}
-		});
+		mnuCautious.setOnAction(new CautiousComputerListner());
 		mnuCautious.setMnemonicParsing(true);
 		mnuCautious.setToggleGroup(tglStrategy);
 		
 		RadioMenuItem mnuGreedy = new RadioMenuItem("Gr_eedy");
 		mnuGreedy.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
-		mnuGreedy.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-				NimMenuBar.this.theGame.getComputerPlayer().setStrategy(new GreedyStrategy());
-			}
-		});
+		mnuGreedy.setOnAction(new GreedyComputerListner());
 		mnuGreedy.setMnemonicParsing(true);
 		mnuGreedy.setToggleGroup(tglStrategy);
 		
 		RadioMenuItem mnuRandom = new RadioMenuItem("_Random");
 		mnuRandom.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
-		mnuRandom.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent theEventObject) {
-				NimMenuBar.this.theGame.getComputerPlayer().setStrategy(new RandomStrategy());
-			}
-		});
+		mnuRandom.setOnAction(new RandomComputerListner());
 		mnuRandom.setMnemonicParsing(true);
 		mnuRandom.setToggleGroup(tglStrategy);
 		
@@ -91,6 +94,51 @@ public class NimMenuBar {
 
 		mnuSettings.getItems().addAll(mnuCautious, mnuGreedy, mnuRandom);
 		return mnuSettings;
+	}
+	
+	/*
+	 * Defines the listener to set strategy to cautious.
+	 */
+	private class CautiousComputerListner implements EventHandler<ActionEvent> {
+		/*
+		 * Sets strategy to cautious
+		 */
+
+		@Override
+		public void handle(ActionEvent event) {
+			CautiousStrategy strategy = new CautiousStrategy();
+			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+		}
+	}
+
+	/*
+	 * Defines the listener to set strategy to Greedy.
+	 */
+	private class GreedyComputerListner implements EventHandler<ActionEvent> {
+		/*
+		 * Sets strategy to Greedy
+		 */
+
+		@Override
+		public void handle(ActionEvent event) {
+			GreedyStrategy strategy = new GreedyStrategy();
+			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+		}
+	}
+
+	/*
+	 * Defines the listener to set strategy to Random.
+	 */
+	private class RandomComputerListner implements EventHandler<ActionEvent> {
+		/*
+		 * Sets strategy to Random
+		 */
+
+		@Override
+		public void handle(ActionEvent event) {
+			RandomStrategy strategy = new RandomStrategy();
+			NimMenuBar.this.theGame.getComputerPlayer().setStrategy(strategy);
+		}
 	}
 
 	private Menu createGameMenu() {
