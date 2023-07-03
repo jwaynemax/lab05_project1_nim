@@ -1,8 +1,6 @@
 package edu.westga.cs6910.nim.view;
 
 import edu.westga.cs6910.nim.model.Game;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
