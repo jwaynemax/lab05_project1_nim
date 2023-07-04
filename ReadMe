@@ -1,0 +1,15 @@
+1. NimHelpDialog
+	- Method showHelpDialog contains all code needed to show and interact with the help dialog. 
+	- Added methods getShouldShowHelpDialog and setShouldShowHelpDialog to retrieve and/or set the current state of data field shouldShowHelpDialog from NimMenuBar
+2. About
+	- Directions state "About, which should display the date and your name on two different lines" 
+		- I wasn't clear if this should be an alert or displayed on the app and if the data should be current or date the app was created
+			- I created as an Alert so the user could quickly see the creator of the app and the current date
+			- I set date to current so user could see current timestamp
+7. FullNimPane 
+	- Moved data fields for pnHumanPlayer, pnComputerPlayer, pnGameInfo, and pnChooseFirstPlayer to FullNimPane to ensure separation of concerns.
+	- Added getters / setters for these fields to reference in NimMenuBar and NewGamePane to retrieve the current state of the pane for the current game
+		
+	 
+	
+	
