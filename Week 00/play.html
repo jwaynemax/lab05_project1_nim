@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Objective & Rules</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                        aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                        <li><a class="dropdown-item" href="background.html">Background</a></li>
+                        <li><a class="dropdown-item" href="objective.html">Objective & Rules</a></li>
+                        <li><a class="dropdown-item" href="strategies.html">Strategy</a></li>
+                        <li><a class="dropdown-item" href="menu.html">Menu</a></li>
+                        <li><a class="dropdown-item" href="play.html">How To Play</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+
+        <div class="container">
+            <div class="content">
+                <h1>Let's Play!</h1>
+                <h2>Rules</h2>
+                <ol>
+                    <li>Once the game loads, user will be prompted with Nim rules. Select yes or no for this alert to load at the beginning of each game.</li>
+                    <li>User can set the initial pile size to 9, 16, or 21</l1>
+                    <li>User can select either the 'human first' or 'better computer first' or 'random player' which will randomly select either the human or computer to take the first turn</li>
+                    <li>When it's the human's turn, the player can select between 1 and 3 (Max) sticks to take</li>
+                    <li>Select Take Turn</li>
+                    <li>The computer will then take its turn</li>
+                     <li>**NOTE: By default, the computer's strategy is 'Cautious'. Only one stick will be taken. To have the computer play a different strategy, 
+                     select the strategy menu. See <a href="menu.html">menu</a> for more information on the various strategies the computer can play.</li>
+                   	<li>The player who takes the last stick has lost the game</li>
+                    <li>If you'd like to play again, select Game >> New (CTRL+N).</li>
+                </ol>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript & Popper plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

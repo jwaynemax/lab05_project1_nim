@@ -1,0 +1,46 @@
+html,
+body {
+  background-color: gray;
+  margin: 0;
+  height: 100%;
+}
+
+nav {
+  padding-left: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.content {
+  color: white;
+  background-color: #d2b48c;
+  border: 3px #d2b48c solid;
+  border-radius: 10px;
+  padding: 30px;
+  height: auto;
+  width: auto;
+}
+
+.content>h1 {
+  text-align: center;
+}
+
+.content>p,
+ol,
+ul {
+  color: black;
+}
+
+.user-guide-term {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.piles {
+  list-style: lower-alpha;
+}
